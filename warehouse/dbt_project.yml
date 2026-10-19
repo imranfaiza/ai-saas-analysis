@@ -1,0 +1,39 @@
+name: margin_squeeze
+version: "1.0.0"
+config-version: 2
+profile: margin_squeeze
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  data_dir: "../data"
+  baseline_fiscal_year: 2022
+  first_fiscal_year: 2021
+  extraction_model: "gemini-3.1-flash-lite"
+
+models:
+  margin_squeeze:
+    raw:
+      +schema: raw
+      +materialized: table
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  margin_squeeze:
+    +schema: seeds
+    companies:
+      +column_types: {ticker: varchar, company_name: varchar, segment: varchar}
+    xbrl_tag_map:
+      +column_types: {company: varchar, xbrl_tag: varchar, standard_name: varchar, priority: integer, note: varchar}
+    cost_of_revenue_components:
+      +column_types: {company: varchar, component: varchar, xbrl_tag: varchar, axis: varchar, member: varchar, note: varchar}

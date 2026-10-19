@@ -1,0 +1,95 @@
+# Semantic layer: the only tables, columns and metric definitions the agent may use.
+# Database: DuckDB file warehouse.duckdb (built by dbt in warehouse/).
+
+tables:
+  - name: marts.mart_margin_squeeze
+    grain: one row per company (25 rows)
+    description: FY2022 gross margin vs the latest trailing twelve months (TTM), plus efficiency metrics.
+    columns:
+      ticker: stock ticker, e.g. CRM
+      company_name: company name, e.g. Salesforce
+      segment: "one of: Applications, Data & Infrastructure, Security"
+      fiscal_year_end_month: month number the company's fiscal year ends (1 = January)
+      fy2022_gross_margin_pct: gross margin % in the company's fiscal year 2022 (the baseline, before ChatGPT)
+      ttm_through: label of the last quarter in the TTM window, e.g. 'FY2026 Q2'
+      ttm_period_end: date the TTM window ends
+      ttm_revenue_musd: TTM revenue in millions of USD
+      ttm_gross_margin_pct: gross margin % over the latest TTM
+      margin_change_bps: (ttm_gross_margin_pct - fy2022_gross_margin_pct) x 100; negative = margin compressed
+      ttm_revenue_growth_pct: TTM revenue vs the TTM one year earlier, %
+      ttm_cost_of_revenue_growth_pct: TTM cost of revenue vs the TTM one year earlier, %
+      cost_growth_gap_pts: ttm_cost_of_revenue_growth_pct - ttm_revenue_growth_pct; > 0 means delivery costs grew faster than revenue
+      ttm_sales_marketing_pct: TTM sales & marketing as % of revenue
+      ttm_rnd_pct: TTM research & development as % of revenue
+      ttm_fcf_margin_pct: TTM free cash flow as % of revenue
+      rule_of_40: ttm_revenue_growth_pct + ttm_fcf_margin_pct
+      data_gaps: explanation of any missing metric, empty if none
+
+  - name: marts.fct_company_quarter
+    grain: one row per company per fiscal quarter (FY2021 onward)
+    description: Quarterly financials. Money columns are in USD (not millions); divide by 1e6 for $M.
+    columns:
+      ticker: stock ticker
+      company_name: company name
+      segment: segment
+      fiscal_year: the company's own fiscal year label (fiscal years end in different months per company)
+      fiscal_quarter: 1-4
+      quarter_index: fiscal_year * 4 + fiscal_quarter; use it to order quarters or find the latest one
+      period_end: date the quarter ends
+      revenue: revenue, USD
+      cost_of_revenue: cost of revenue, USD
+      gross_profit: revenue - cost_of_revenue, USD
+      sales_marketing: sales & marketing expense, USD
+      rnd: research & development expense, USD
+      operating_cash_flow: operating cash flow, USD
+      capex: capital expenditures, USD
+      free_cash_flow: operating_cash_flow - capex, USD
+      gross_margin_pct: gross_profit / revenue x 100
+      sales_marketing_pct: sales_marketing / revenue x 100
+      rnd_pct: rnd / revenue x 100
+      fcf_margin_pct: free_cash_flow / revenue x 100
+
+  - name: marts.mart_ai_disclosures
+    grain: one row per company (25 rows)
+    description: What each company's latest 10-K says about AI costs, extracted by Gemini and evaluated against hand labels.
+    columns:
+      ticker: stock ticker
+      company_name: company name
+      segment: segment
+      filing_period_end: period end of the 10-K that was read
+      ai_cost_pressure: "'reported' = says AI costs already raised cost of revenue or cut gross margin; 'risk_only' = only a possible future risk; 'none' = not mentioned"
+      main_cost_driver: "main driver of the change in cost of revenue: hosting_infrastructure, ai_compute, personnel, amortization, professional_services, payment_processing, other"
+      earns_ai_revenue: true if the company says it sells AI products or features
+      evidence_quote: sentence from the 10-K supporting ai_cost_pressure
+      evidence_quote_verified: true if the quote was found word-for-word in the filing text
+      extraction_model: Gemini model that produced the answers
+
+metrics:
+  gross_margin_pct:
+    definition: (revenue - cost_of_revenue) / revenue x 100
+    for_one_quarter: marts.fct_company_quarter.gross_margin_pct
+    latest_ttm: marts.mart_margin_squeeze.ttm_gross_margin_pct
+    fy2022: marts.mart_margin_squeeze.fy2022_gross_margin_pct
+    for_a_group: compute from sums, sum(revenue - cost_of_revenue) / sum(revenue) x 100; never average percentages unless asked for a median or average
+  margin_change_bps:
+    definition: change in gross margin from FY2022 to latest TTM, in basis points (100 bps = 1 percentage point)
+    sql: marts.mart_margin_squeeze.margin_change_bps
+    compressed: margin_change_bps < 0
+  cost_growth_gap_pts:
+    definition: TTM cost of revenue growth minus TTM revenue growth, percentage points
+    sql: marts.mart_margin_squeeze.cost_growth_gap_pts
+  rule_of_40:
+    definition: TTM revenue growth % + TTM free cash flow margin %; >= 40 passes
+    sql: marts.mart_margin_squeeze.rule_of_40
+  free_cash_flow:
+    definition: operating cash flow - capex (capitalized software excluded)
+  ai_cost_pressure:
+    sql: marts.mart_ai_disclosures.ai_cost_pressure
+
+rules:
+  - Use only the tables and columns above. Write one DuckDB SELECT query.
+  - "Latest" or "now" means the latest TTM in mart_margin_squeeze, or max(quarter_index) per ticker in fct_company_quarter.
+  - Fiscal years are each company's own; say so when comparing fiscal years across companies.
+  - Match companies by ticker or company_name (case-insensitive, e.g. ilike '%salesforce%').
+  - Round percentages to 1 decimal and dollar amounts to millions with 1 decimal.
+  - Include ticker and company_name in results that list companies.

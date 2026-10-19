@@ -1,0 +1,26 @@
+ticker,company_name,segment
+CRM,Salesforce,Applications
+ADBE,Adobe,Applications
+NOW,ServiceNow,Applications
+WDAY,Workday,Applications
+INTU,Intuit,Applications
+SNOW,Snowflake,Data & Infrastructure
+DDOG,Datadog,Data & Infrastructure
+MDB,MongoDB,Data & Infrastructure
+HUBS,HubSpot,Applications
+TEAM,Atlassian,Applications
+ZM,Zoom,Applications
+TWLO,Twilio,Data & Infrastructure
+OKTA,Okta,Security
+CRWD,CrowdStrike,Security
+PLTR,Palantir,Data & Infrastructure
+ESTC,Elastic,Data & Infrastructure
+ASAN,Asana,Applications
+BOX,Box,Applications
+DOCU,DocuSign,Applications
+ZS,Zscaler,Security
+NET,Cloudflare,Security
+IOT,Samsara,Applications
+PATH,UiPath,Applications
+AI,C3.ai,Data & Infrastructure
+DUOL,Duolingo,Applications

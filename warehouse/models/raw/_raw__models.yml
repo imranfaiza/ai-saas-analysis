@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: raw_sec__xbrl_facts
+    description: XBRL facts from the SEC companyfacts API, one row per company, tag, period, value and filing.
+    columns:
+      - name: ticker
+        data_tests: [not_null]
+      - name: tag
+        data_tests: [not_null]
+      - name: period_end
+        data_tests: [not_null]
+      - name: value
+        data_tests: [not_null]
+      - name: filed
+        data_tests: [not_null]
+
+  - name: raw_sec__component_facts
+    description: Dimensional cost-of-revenue lines parsed from inline XBRL (Workday, Intuit).
+    columns:
+      - name: ticker
+        data_tests: [not_null]
+      - name: period_end
+        data_tests: [not_null]
+      - name: value
+        data_tests: [not_null]
+
+  - name: raw_ai__extractions
+    description: Gemini extraction results from ai/extract.py, one row per model and company.
+    columns:
+      - name: ticker
+        data_tests: [not_null]
+      - name: model
+        data_tests: [not_null]
+
+  - name: raw_sec__companies
+    description: SEC company metadata.
+    columns:
+      - name: ticker
+        data_tests: [unique, not_null]

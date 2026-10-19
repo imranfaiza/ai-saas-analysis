@@ -1,0 +1,35 @@
+# OKTA 10-K period ending 2026-01-31 (filed 2026-03-05)
+# https://www.sec.gov/Archives/edgar/data/1660134/000166013426000020/okta-20260131.htm
+
+## Item 1A. Risk Factors
+
+
+Some of our larger competitors have substantially broader product offerings, or greater resources to acquire new offerings or repurpose existing offerings to provide identity solutions with subscription models. As a result, they can leverage their relationships based on other solutions, or incorporate functionality into existing solutions, to gain business in a manner that discourages users from purchasing our solutions, including selling at zero or negative margins, bundling products or maintaining closed technology platforms. In addition, larger competitors, as well as new start-up companies that innovate, make significant investments in research and development and may invent similar or superior solutions that compete with our solutions. It is also possible that products and services developed by others, including, but not limited to, new technologies and offerings integrating AI, or products and services developed by competitors, could put us at a competitive disadvantage. These competitive pressures or our failure to compete effectively may result in price reductions, fewer orders, reduced revenue and gross margins, increased net losses and loss of market share, which could harm our business, results of operations and financial condition.
+
+We use internally developed and third-party developed machine learning and AI technologies (collectively, “AI Technologies”) in our offerings and business, and we are making investments in expanding our AI capabilities in our portfolio, including ongoing deployment and improvement of existing AI Technologies, as well as developing new product features using AI Technologies. We expect to rely on AI Technologies to help drive future growth and efficiency in our business. While our use of AI Technologies may become more important to our operations or to our future growth over time, we may not be able to realize the desired or anticipated benefits from AI in a timely or cost-effective manner.
+
+In addition, we are working to incorporate generative AI Technologies (i.e., those that can produce and output new content, software code, data and information) into our offerings and internal business practices. Uncertainty around new and emerging AI Technologies, such as generative AI Technologies, may require additional investment in the development and maintenance of proprietary and third-party datasets and machine learning models, development of new approaches and processes to provide attribution or remuneration to creators of training data, and development of appropriate protections and safeguards for handling the use of customer data with AI Technologies, which may be costly and could impact our expenses as we continue to expand generative AI Technologies into our product offerings. If such investments do not deliver anticipated benefits or are not otherwise successful, our business and results of operations may be harmed. Furthermore, there is a risk that generative AI Technologies may create content that appears correct but is factually inaccurate or misleading, or that creates other discriminatory content or unexpected results or behaviors. Our customers or others may rely on or use this misleading content to their detriment, which may expose us to brand or reputational harm, competitive harm and/or legal liability. The use of AI Technologies presents emerging ethical and social issues, and if we enable or offer solutions that draw scrutiny or controversy due to their perceived or actual impact on customers or on society as a whole, we may experience brand or reputational harm, competitive harm and/or legal liability.
+
+
+## Item 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS
+
+
+We allocate shared costs, such as facilities costs (including rent, utilities and depreciation on assets shared by all departments), certain information technology costs, security costs and recruiting costs to all departments based on headcount. As such, allocated shared costs are reflected in each of the cost of revenue and operating expense categories. Employee compensation costs reflected in each of the cost of revenue and operating expense categories include salaries, bonuses, compensation related taxes, benefits and stock-based compensation. Additionally included in the sales and marketing expense category are sales commissions and related taxes.
+
+Cost of Subscription. Cost of subscription primarily consists of expenses related to hosting our services and providing support. These expenses include employee-related costs associated with our cloud-based infrastructure, our product security organization and our customer support organization, third-party hosting fees, software and maintenance costs, outside services associated with the delivery of our subscription services, amortization expense associated with capitalized internal-use software and acquired developed technology and allocated overhead.
+
+expect our investment in technology to expand the capability of our platforms, enabling us to improve our gross margin over time. The level and timing of investment in these areas could affect our cost of subscription revenue in the future.
+
+Cost of Professional Services and Other. Cost of professional services consists primarily of employee-related costs for our professional services delivery team, travel-related costs, allocated overhead and costs of outside services associated with supplementing our professional services delivery team. The cost of providing professional services has historically been higher than the associated revenue we generate.
+
+Gross Margin. Gross margin is gross profit expressed as a percentage of total revenue. Our gross margin may fluctuate from period to period as a result of the timing and amount of investments to expand our hosting capacity and our continued efforts to build platform support and professional services teams.
+
+For fiscal 2026, cost of subscription revenue increased primarily due to an increase of $20 million in labor costs, third-party hosting costs of $15 million, and software costs of $9 million. This was offset by decreases in consulting costs of $10 million and stock-based compensation of $8 million.
+
+Our gross margin for subscription revenue improved from 79% to 80% during fiscal 2026. The increase was primarily driven by improved spend efficiency resulting in lower relative cost of subscription revenue.
+
+
+## Item 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA
+
+
+Costs of revenue primarily consist of costs related to providing the Company’s cloud-based platforms to its customers, including third-party hosting fees, amortization of capitalized internal-use software and finite-lived purchased developed technology, customer support, other employee-related expenses for security, technical operations and professional services staff, and allocated overhead costs.

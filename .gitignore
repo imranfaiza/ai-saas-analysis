@@ -1,0 +1,19 @@
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# Raw SEC JSON cache (re-downloadable, large)
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# dbt / DuckDB
+warehouse/target/
+warehouse/logs/
+warehouse/dbt_packages/
+*.duckdb.wal
+warehouse/.user.yml

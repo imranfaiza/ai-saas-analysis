@@ -1,0 +1,27 @@
+# ESTC 10-Q period ending 2026-07-31 (filed 2026-08-28)
+# https://www.sec.gov/Archives/edgar/data/1707753/000170775326000054/estc-20260731.htm
+
+## Item 6.
+
+
+•our future financial performance, including our expectations regarding our revenue, cost of revenue, gross profit or gross margin, operating expenses (which include changes in sales and marketing, research and development, and general and administrative expenses), and our ability to achieve and maintain profitability;
+
+
+## Item 1. Financial Statements
+
+
+Significant segment expenses that are reviewed and utilized by the CODM at the consolidated level to manage the Company’s operations include cost of revenue, research and development, sales and marketing, and general and administrative expenses, which are presented in the Company’s condensed consolidated statements of operations. Other segment items that impact net loss include restructuring and other related charges, interest expense, other income, net, and the (benefit from) provision for income taxes, which are presented in the Company’s condensed consolidated statements of operations.
+
+
+## Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+
+Subscription. Cost of subscription consists primarily of cloud hosting costs, personnel and related costs for employees associated with supporting our subscription arrangements, certain third-party expenses associated with our customer support, and amortization of certain intangible and other assets. Personnel and related costs comprise cash compensation, benefits and stock-based compensation to employees, costs of third-party contractors, and allocated overhead costs. We expect our cost of subscription to increase in absolute dollars as our subscription revenue increases.
+
+Services. Cost of services revenue consists primarily of personnel costs directly associated with delivery of training, implementation and other services, costs of third-party contractors, facility rental charges and allocated overhead costs. We expect our cost of services to increase in absolute dollars as we invest in our business and as services revenue increases.
+
+Gross profit and gross margin. Gross profit represents revenue less cost of revenue. Gross margin, or gross profit as a percentage of revenue, has been and will continue to be affected by a variety of factors, including the timing of our acquisition of new customers and our renewals with existing customers, the average sales price of our subscriptions and services, the amount of our revenue represented by hosted services, the mix of subscriptions sold, the mix of revenue between subscriptions and services, the mix of services between consulting and training, transaction volume growth, and support case volume growth. We expect our gross margin to fluctuate over time depending on the factors described above. We expect our revenue from Elastic Cloud to continue to increase as a percentage of total revenue, which we expect will continue to have a modestly unfavorable impact on our gross margin as a result of the associated third-party cloud hosting costs.
+
+Cost of subscription revenue increased by $22.5 million, or 32%, for the three months ended July 31, 2026 compared to the same period of the prior year. This increase was primarily due to an increase of $16.0 million in cloud hosting costs, $3.9 million in partner reseller expense, $1.0 million in intangible assets amortization, and $1.0 million in personnel and related costs. Subscription gross margin decreased to 80% for the three months ended July 31, 2026 compared to 82% for the same period of the prior year primarily due to a higher increase in our cloud hosting costs relative to revenue growth.
+
+Cost of services revenue increased by $2.7 million, or 10%, for the three months ended July 31, 2026 compared to the same period of the prior year. This increase was primarily due to increases of $2.0 million in personnel and related costs and $1.2 million in subcontractor costs, partially offset by a decrease of $0.5 million in travel expenses. Gross margin for services revenue remained flat at (2)% compared to the same period of the prior year. We continue to make investments in our services organization that we believe will be needed to support our continued growth. Our gross margin for services may fluctuate or decline in the near term as we seek to expand our services business.

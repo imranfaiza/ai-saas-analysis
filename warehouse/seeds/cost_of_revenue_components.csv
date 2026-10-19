@@ -1,0 +1,11 @@
+company,component,xbrl_tag,axis,member,note
+WDAY,subscription,us-gaap:CostOfGoodsAndServicesSold,srt:ProductOrServiceAxis,wday:SubscriptionServicesMember,Income statement line: Costs of subscription services
+WDAY,professional_services,us-gaap:CostOfGoodsAndServicesSold,srt:ProductOrServiceAxis,wday:ProfessionalServicesMember,Income statement line: Costs of professional services
+INTU,service,us-gaap:CostOfGoodsAndServicesSold,srt:ProductOrServiceAxis,us-gaap:ServiceMember,Income statement line: Cost of service and other revenue (FY2023+ filings)
+INTU,service,us-gaap:CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization,srt:ProductOrServiceAxis,us-gaap:ServiceMember,Same line; tag used in older 10-Qs
+INTU,service,us-gaap:CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization,srt:ProductOrServiceAxis,intu:ServiceAndOtherMember,Same line; member used in older 10-Qs
+INTU,product,us-gaap:CostOfGoodsAndServicesSold,srt:ProductOrServiceAxis,intu:ProductAndOtherMember,Income statement line: Cost of product revenue (FY2023+ filings)
+INTU,product,us-gaap:CostOfGoodsAndServicesSold,srt:ProductOrServiceAxis,us-gaap:ProductMember,Same line; member used in older 10-Ks
+INTU,product,us-gaap:CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization,srt:ProductOrServiceAxis,us-gaap:ProductMember,Same line; tag used in older 10-Qs
+INTU,product,us-gaap:CostOfGoodsAndServiceExcludingDepreciationDepletionAndAmortization,srt:ProductOrServiceAxis,intu:ProductAndOtherMember,Same line; tag used in older 10-Qs
+INTU,amortization,us-gaap:CostOfGoodsAndServicesSoldAmortization,,,Income statement line: Amortization of acquired technology (no dimension)

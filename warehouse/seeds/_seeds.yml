@@ -1,0 +1,28 @@
+version: 2
+
+seeds:
+  - name: companies
+    description: The 25 companies in scope.
+    columns:
+      - name: ticker
+        description: Every company must appear in mart_margin_squeeze.
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('mart_margin_squeeze')
+                field: ticker
+
+  - name: xbrl_tag_map
+    description: >
+      Maps XBRL tags to standard metric names. company = 'default' applies to everyone; a ticker
+      overrides the default for that company. Lower priority wins when a company reports several tags.
+    columns:
+      - name: standard_name
+        data_tests: [not_null]
+
+  - name: cost_of_revenue_components
+    description: >
+      The component lines summed into total cost of revenue for companies that don't tag the total.
+      Rows with the same component name are alternative tags or members for the same line.

@@ -1,0 +1,25 @@
+# DUOL 10-Q period ending 2026-06-30 (filed 2026-08-06)
+# https://www.sec.gov/Archives/edgar/data/1562088/000162828026053603/duol-20260630.htm
+
+## Item 1. Financial Statements (Unaudited)
+
+
+In November 2024, the FASB issued ASU 2024-03, Income Statement-Reporting Comprehensive Income-Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses. The amendment requires new financial statement disclosures to provide disaggregated information for certain types of expenses, including employee compensation, depreciation, and amortization in commonly presented expense captions such as cost of revenue, sales and marketing, and general and administrative expenses. The amendments in this ASU are effective for annual reporting periods beginning after December 15, 2026, and interim periods within fiscal years beginning after December 15, 2027. The Company is currently evaluating the disclosure requirements related to the new standard.
+
+
+## Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations
+
+
+For the three months ended June 30, 2026 and 2025, we generated net income of $33.2 million and $44.8 million, respectively representing a decrease of $11.6 million. For the six months ended June 30, 2026 and 2025, we generated net income of $76.6 million and $79.9 million, respectively, representing a decrease of $3.3 million. The decrease in net income for the three months ended June 30, 2026, as compared to the comparative prior period was primarily due to operating expenses increasing slightly faster than revenue during the period. The increase in net income for the six months ended June 30, 2026, as compared to the comparative prior period was primarily due to revenue growth and gross margin expansion during the period.
+
+Cost of revenues predominantly consists of third-party payment processing fees charged by various distribution channels in addition to hosting fees and third-party AI costs. To a much lesser extent, cost of revenues includes customer support costs, such as contractor fees, wages and stock-based compensation for certain employees working in customer support. It also includes the amortization of revenue generating capitalized software, and depreciation of certain property and equipment.
+
+We intend to continue to invest in the development and enhancement of our products to expand their capabilities and allow our users to realize the full benefit of our offerings. The level, timing, and relative investment in these areas could affect our cost of revenues in the future.
+
+Gross profit represents revenues less cost of revenues. Gross margin is gross profit expressed as a percentage of revenues. Our gross profit may fluctuate from period to period as our revenues fluctuate, and also as a result of the timing and amount of investments we make in items related to cost of revenues.
+
+Cost of Revenues and Gross Margin. Total gross margin increased to 72.6% from 72.4% during the three months ended June 30, 2026 and 2025, and total gross margin increased to 72.8% from 71.8% during the six months ended June 30, 2026 and 2025. The increase was primarily attributable to an increase in subscription gross margin, reflecting continued reductions in per-unit third-party AI costs.
+
+Research and Development. Research and development expense increased by $18.5 million, or 25%, to $92.2 million during the three months ended June 30, 2026 from $73.7 million during the three months ended June 30, 2025. The increase was primarily due to higher net personnel costs of $13.8 million, driven primarily by growth in headcount, including increased stock-based compensation expenses related to equity awards of $5.0 million, and increased software and third-party AI costs of $3.3 million.
+
+Research and development expense increased by $31.1 million, or 22%, to $175.2 million during the six months ended June 30, 2026 from $144.1 million during the six months ended June 30, 2025. The increase was primarily due to higher net personnel costs of $23.6 million, driven primarily by the growth in headcount, including increased stock-based compensation expenses related to equity awards of $8.9 million, and increased software and third-party AI costs of $5.5 million.

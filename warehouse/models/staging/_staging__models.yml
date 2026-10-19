@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_sec__companies
+    description: The 25 companies with SEC CIK and fiscal year-end month.
+    columns:
+      - name: ticker
+        data_tests: [unique, not_null]
+      - name: cik
+        data_tests: [not_null]
+      - name: fiscal_year_end_month
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments: {min_value: 1, max_value: 12}
+
+  - name: stg_sec__mapped_facts
+    description: >
+      Facts translated to standard metric names via seeds/xbrl_tag_map.csv, one value per company,
+      metric and period (company-specific mapping first, then priority, then most recently filed).
+    columns:
+      - name: standard_name
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [revenue, cost_of_revenue, gross_profit, sales_marketing, rnd, operating_cash_flow, capex]
+
+  - name: stg_sec__cost_components
+    description: >
+      Total cost of revenue for Workday and Intuit, summed from the component lines listed in
+      seeds/cost_of_revenue_components.csv. Workday = subscription + professional services.
+      Intuit = service + product + amortization of acquired technology. Periods missing any
+      component are dropped.
+
+  - name: stg_sec__period_values
+    description: One value per company, metric and reporting period, with fiscal year and quarter labels.
+    columns:
+      - name: period_value_id
+        data_tests: [unique, not_null]
+      - name: fiscal_quarter
+        data_tests:
+          - accepted_range:
+              arguments: {min_value: 1, max_value: 4}
+
+  - name: stg_sec__quarterly_values
+    description: >
+      One value per company, metric and fiscal quarter. value_method records whether the number
+      was reported directly or derived from year-to-date or annual totals.
+    columns:
+      - name: quarterly_value_id
+        data_tests: [unique, not_null]
+      - name: value_method
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [reported_quarter, ytd_minus_prior_ytd, annual_minus_9m_ytd, annual_minus_prior_quarters]

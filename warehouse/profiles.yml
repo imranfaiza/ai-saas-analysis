@@ -1,0 +1,8 @@
+margin_squeeze:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      # Relative to the directory dbt runs from; run dbt inside warehouse/.
+      path: "{{ env_var('DUCKDB_PATH', '../warehouse.duckdb') }}"
+      threads: 4

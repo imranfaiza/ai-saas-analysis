@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: fct_company_quarter
+    description: >
+      One row per company per fiscal quarter (FY2021 onward) with revenue, cost of revenue, gross profit,
+      S&M, R&D, operating cash flow, capex and free cash flow. Fiscal years follow each company's own
+      labels. Free cash flow = operating cash flow - capex.
+    columns:
+      - name: company_quarter_id
+        description: ticker-FYyyyyQn
+        data_tests: [unique, not_null]
+      - name: ticker
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_sec__companies')
+                field: ticker
+      - name: fiscal_quarter
+        data_tests:
+          - not_null
+          - accepted_range:
+              arguments: {min_value: 1, max_value: 4}
+      - name: gross_margin_pct
+        description: (revenue - cost of revenue) / revenue, in percent
+        data_tests:
+          - accepted_range:
+              arguments: {min_value: -100, max_value: 100}
+
+  - name: mart_margin_squeeze
+    description: >
+      One row per company comparing FY2022 gross margin (the last full fiscal year before ChatGPT) with
+      the latest trailing twelve months. Growth rates compare the latest TTM with the TTM a year earlier.
+      cost_growth_gap_pts > 0 means delivery costs grew faster than revenue. Rule of 40 = TTM revenue
+      growth % + TTM free cash flow margin %. data_gaps explains any blank metric.
+    columns:
+      - name: ticker
+        data_tests: [unique, not_null]
+      - name: fy2022_gross_margin_pct
+        data_tests:
+          - accepted_range:
+              arguments: {min_value: -100, max_value: 100}
+      - name: ttm_gross_margin_pct
+        data_tests:
+          - accepted_range:
+              arguments: {min_value: -100, max_value: 100}
+
+  - name: mart_ai_disclosures
+    description: >
+      One row per company with what its latest 10-K says about AI costs, extracted by the model chosen in
+      the Phase 3 eval (var extraction_model). ai_cost_pressure: reported = AI costs named as already
+      raising cost of revenue or lowering gross margin; risk_only = only a possible future risk; none = not mentioned.
+    columns:
+      - name: ticker
+        data_tests: [unique, not_null]
+      - name: ai_cost_pressure
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [reported, risk_only, none]
+      - name: main_cost_driver
+        data_tests: [not_null]

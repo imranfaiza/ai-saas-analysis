@@ -1,0 +1,24 @@
+company,xbrl_tag,standard_name,priority,note
+default,us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax,revenue,1,Most common revenue tag since ASC 606 (2018)
+default,us-gaap:Revenues,revenue,2,Older generic total revenue tag
+default,us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax,revenue,3,Used by CrowdStrike
+default,us-gaap:SalesRevenueNet,revenue,4,Deprecated pre-2018 tag
+default,ifrs-full:Revenue,revenue,9,Atlassian 20-F filings before FY2023 (IFRS)
+default,us-gaap:CostOfRevenue,cost_of_revenue,1,
+default,us-gaap:CostOfGoodsAndServicesSold,cost_of_revenue,2,
+default,us-gaap:CostOfServices,cost_of_revenue,3,
+default,ifrs-full:CostOfSales,cost_of_revenue,9,Atlassian 20-F (IFRS)
+default,us-gaap:GrossProfit,gross_profit,1,
+default,ifrs-full:GrossProfit,gross_profit,9,Atlassian 20-F (IFRS)
+default,us-gaap:SellingAndMarketingExpense,sales_marketing,1,
+default,ifrs-full:SellingExpense,sales_marketing,9,Atlassian 20-F (IFRS)
+default,us-gaap:ResearchAndDevelopmentExpense,rnd,1,
+default,us-gaap:ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost,rnd,2,
+default,ifrs-full:ResearchAndDevelopmentExpense,rnd,9,Atlassian 20-F (IFRS)
+ADBE,us-gaap:ResearchAndDevelopmentExpenseSoftwareExcludingAcquiredInProcessCost,rnd,1,Adobe tags R&D with the software-specific variant
+default,us-gaap:NetCashProvidedByUsedInOperatingActivities,operating_cash_flow,1,
+default,ifrs-full:CashFlowsFromUsedInOperatingActivities,operating_cash_flow,9,Atlassian 20-F (IFRS)
+default,us-gaap:PaymentsToAcquirePropertyPlantAndEquipment,capex,1,
+default,us-gaap:PaymentsToAcquireProductiveAssets,capex,2,
+default,ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities,capex,9,Atlassian 20-F (IFRS)
+TWLO,us-gaap:PaymentsToAcquireOtherProductiveAssets,capex,1,"Twilio switched to ""Purchases of long-lived and intangible assets"" in late 2022"

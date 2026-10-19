@@ -1,0 +1,72 @@
+# Agent test set. gold_sql is the hand-written correct query; the agent passes a question when every
+# value in the gold result appears in its own result (numbers within rounding) with the same row count.
+# Edit or replace questions freely; run `python agent/eval_agent.py` to score.
+
+- id: 1
+  question: Which company had the biggest drop in gross margin since FY2022?
+  gold_sql: select ticker from marts.mart_margin_squeeze order by margin_change_bps asc limit 1
+
+- id: 2
+  question: How many of the companies saw their gross margin go down since FY2022?
+  gold_sql: select count(*) from marts.mart_margin_squeeze where margin_change_bps < 0
+
+- id: 3
+  question: What is the median change in gross margin since FY2022, in basis points?
+  gold_sql: select median(margin_change_bps) from marts.mart_margin_squeeze
+
+- id: 4
+  question: What is Salesforce's gross margin over the latest twelve months?
+  gold_sql: select ttm_gross_margin_pct from marts.mart_margin_squeeze where ticker = 'CRM'
+
+- id: 5
+  question: Which three companies have the highest Rule of 40 score?
+  gold_sql: select ticker from marts.mart_margin_squeeze order by rule_of_40 desc limit 3
+
+- id: 6
+  question: Which companies say AI costs are already hurting their margins?
+  gold_sql: select ticker from marts.mart_ai_disclosures where ai_cost_pressure = 'reported'
+
+- id: 7
+  question: What was Snowflake's revenue in its most recent quarter, in millions of dollars?
+  gold_sql: |
+    select round(revenue / 1e6, 1) from marts.fct_company_quarter
+    where ticker = 'SNOW' order by quarter_index desc limit 1
+
+- id: 8
+  question: What is the average latest TTM gross margin for each segment?
+  gold_sql: |
+    select segment, avg(ttm_gross_margin_pct) from marts.mart_margin_squeeze group by segment
+
+- id: 9
+  question: Which companies have cost of revenue growing faster than revenue?
+  gold_sql: select ticker from marts.mart_margin_squeeze where cost_growth_gap_pts > 0
+
+- id: 10
+  question: What was Datadog's gross margin in FY2022 and what is it now?
+  gold_sql: |
+    select fy2022_gross_margin_pct, ttm_gross_margin_pct from marts.mart_margin_squeeze where ticker = 'DDOG'
+
+- id: 11
+  question: How many companies say they earn revenue from AI products?
+  gold_sql: select count(*) from marts.mart_ai_disclosures where earns_ai_revenue
+
+- id: 12
+  question: Which company spends the largest share of revenue on R&D?
+  gold_sql: select ticker from marts.mart_margin_squeeze order by ttm_rnd_pct desc nulls last limit 1
+
+- id: 13
+  question: What is the combined TTM revenue of all the companies, in millions of dollars?
+  gold_sql: select sum(ttm_revenue_musd) from marts.mart_margin_squeeze
+
+- id: 14
+  question: For companies that report AI cost pressure, what is their average gross margin change in bps?
+  gold_sql: |
+    select avg(s.margin_change_bps)
+    from marts.mart_margin_squeeze s join marts.mart_ai_disclosures d using (ticker)
+    where d.ai_cost_pressure = 'reported'
+
+- id: 15
+  question: What was Cloudflare's gross margin in each quarter of fiscal 2025?
+  gold_sql: |
+    select fiscal_quarter, gross_margin_pct from marts.fct_company_quarter
+    where ticker = 'NET' and fiscal_year = 2025 order by fiscal_quarter

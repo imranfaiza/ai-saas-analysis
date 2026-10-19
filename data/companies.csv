@@ -1,0 +1,26 @@
+ticker,cik,sec_name,fiscal_year_end,sic,sic_description
+CRM,0001108524,"Salesforce, Inc.",0131,7372,Services-Prepackaged Software
+ADBE,0000796343,ADOBE INC.,1127,7372,Services-Prepackaged Software
+NOW,0001373715,"ServiceNow, Inc.",1231,7372,Services-Prepackaged Software
+WDAY,0001327811,"Workday, Inc.",0131,7374,Services-Computer Processing & Data Preparation
+INTU,0000896878,INTUIT INC.,0731,7372,Services-Prepackaged Software
+SNOW,0001640147,Snowflake Inc.,0131,7372,Services-Prepackaged Software
+DDOG,0001561550,"Datadog, Inc.",1231,7372,Services-Prepackaged Software
+MDB,0001441816,"MongoDB, Inc.",0131,7372,Services-Prepackaged Software
+HUBS,0001404655,HUBSPOT INC,1231,7372,Services-Prepackaged Software
+TEAM,0001650372,Atlassian Corp,0630,7372,Services-Prepackaged Software
+ZM,0001585521,"Zoom Communications, Inc.",0131,7370,"Services-Computer Programming, Data Processing, Etc."
+TWLO,0001447669,TWILIO INC,1231,7372,Services-Prepackaged Software
+OKTA,0001660134,"Okta, Inc.",0131,7372,Services-Prepackaged Software
+CRWD,0001535527,"CrowdStrike Holdings, Inc.",0131,7372,Services-Prepackaged Software
+PLTR,0001321655,Palantir Technologies Inc.,1231,7372,Services-Prepackaged Software
+ESTC,0001707753,Elastic N.V.,0430,7372,Services-Prepackaged Software
+ASAN,0001477720,"Asana, Inc.",0131,7372,Services-Prepackaged Software
+BOX,0001372612,BOX INC,0131,7372,Services-Prepackaged Software
+DOCU,0001261333,"DOCUSIGN, INC.",0131,7372,Services-Prepackaged Software
+ZS,0001713683,"Zscaler, Inc.",0731,7371,Services-Computer Programming Services
+NET,0001477333,"Cloudflare, Inc.",1231,7372,Services-Prepackaged Software
+IOT,0001642896,Samsara Inc.,0130,7373,Services-Computer Integrated Systems Design
+PATH,0001734722,"UiPath, Inc.",0131,7372,Services-Prepackaged Software
+AI,0001577526,"C3.ai, Inc.",0430,7372,Services-Prepackaged Software
+DUOL,0001562088,"Duolingo, Inc.",1231,7372,Services-Prepackaged Software
