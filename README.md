@@ -1,5 +1,7 @@
 # Margin Squeeze: is AI eating SaaS margins?
 
+<img width="1912" height="961" alt="image" src="https://github.com/user-attachments/assets/4504ee8d-4a07-4a94-9814-b5d57d80b87d" />
+
 **Live dashboard:** [ai-saas-analysis.streamlit.app](https://ai-saas-analysis-hifnx6e7ykpytjicp3gd6b.streamlit.app/)
 (the free host sleeps when idle; click "wake up" and give it ~30 seconds)
 
