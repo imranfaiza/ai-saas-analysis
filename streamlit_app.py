@@ -569,8 +569,8 @@ def faq() -> None:
             "(fetch → dbt build → extraction) refreshes it.",
         "Can I check the numbers myself?":
             "Yes. Every figure traces back to an SEC filing, and the code is on "
-            "[GitHub](https://github.com/imranfaiza/ai-saas-analysis). Duolingo, Intuit and Salesforce were "
-            "checked by hand against their filed income statements, and the warehouse runs 76 automated tests.",
+            "[GitHub](https://github.com/imranfaiza/ai-saas-analysis). Duolingo's figures were checked by "
+            "hand against its filings (see VALIDATION.md), and the warehouse runs 76 automated tests.",
     }
     for q, a in qa.items():
         with st.expander(q):
