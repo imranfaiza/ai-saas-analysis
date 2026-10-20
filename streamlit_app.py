@@ -20,7 +20,8 @@ DB_PATH = ROOT / "warehouse.duckdb"
 AI_DIR = ROOT / "data" / "ai"
 MAX_QUESTIONS_PER_SESSION = 10
 
-PRESSURE_LABELS = {"reported": "Already hurting margins", "risk_only": "Future risk only", "none": "Not mentioned"}
+PRESSURE_LABELS = {"reported": "Says AI is raising costs now", "risk_only": "Lists AI as a risk only",
+                   "none": "Not mentioned"}
 PRESSURE_COLORS = alt.Scale(domain=list(PRESSURE_LABELS.values()), range=["#d62728", "#f2a541", "#9e9e9e"])
 
 st.set_page_config(page_title="Margin Squeeze", page_icon="📉", layout="wide")
@@ -92,10 +93,11 @@ def overview() -> None:
     c1.metric("Median margin change", f"{df.margin_change_bps.median():+.0f} bps")
     c2.metric("Margins compressed", f"{(df.margin_change_bps < 0).sum()} of {len(df)}")
     c3.metric("Costs growing faster than revenue", f"{(df.cost_growth_gap_pts > 0).sum()} of {len(df)}")
-    c4.metric("Say AI costs already hurt margins", f"{(df.ai_cost_pressure == 'reported').sum()} of {len(df)}",
-              help="From the latest 10-K or 10-Q, whichever says more.")
+    c4.metric("Say AI is raising their costs now", f"{(df.ai_cost_pressure == 'reported').sum()} of {len(df)}",
+              help="The filing says AI already increased costs in the period (latest 10-K or 10-Q, whichever says "
+                   "more). It doesn't mean the margin fell: four of the five still grew gross margin.")
     st.info("**Short answer:** not yet, at least not where you'd look first. Gross margins rose at most companies, "
-            "even at the five that say AI costs are already hurting. The AI bill is showing up elsewhere: offset by "
+            "even at the five that say AI is already raising their costs. The AI bill is showing up elsewhere: offset by "
             "cheaper hosting, paid for by cutting sales and R&D headcount, and locked in through multi-year cloud "
             "contracts. See *Where the money went* and *Findings & playbook*.")
 
@@ -127,7 +129,7 @@ def overview() -> None:
     st.subheader("All companies")
     table = df[["ticker", "company_name", "segment", "fy2022_gross_margin_pct", "ttm_gross_margin_pct",
                 "margin_change_bps", "ttm_revenue_growth_pct", "cost_growth_gap_pts", "ttm_sales_marketing_pct",
-                "ttm_rnd_pct", "ttm_fcf_margin_pct", "rule_of_40", "ai_disclosure", "ttm_through"]]
+                "ttm_rnd_pct", "ttm_fcf_margin_pct", "rule_of_40", "ai_disclosure", "ttm_period_end"]]
     st.dataframe(
         table.sort_values("margin_change_bps"),
         hide_index=True,
@@ -143,13 +145,20 @@ def overview() -> None:
             "ttm_rnd_pct": st.column_config.NumberColumn("R&D %", format="%.1f"),
             "ttm_fcf_margin_pct": st.column_config.NumberColumn("FCF margin %", format="%.1f"),
             "rule_of_40": st.column_config.NumberColumn("Rule of 40", format="%.1f"),
-            "ai_disclosure": "AI cost disclosure", "ttm_through": "TTM through",
+            "ai_disclosure": "AI cost disclosure",
+            "ttm_period_end": st.column_config.DateColumn("TTM ends", format="MMM YYYY"),
         },
     )
     with st.expander("Method and limits"):
         st.markdown(
             "- **Gross margin** = (revenue − cost of revenue) ÷ revenue, from XBRL facts in 10-K and 10-Q filings. "
             "Restatements use the latest filed value; Q4 = annual − Q1–Q3.\n"
+            "- These are **GAAP** margins, which include stock comp and amortization of acquired technology in cost "
+            "of revenue. They run a few points below the \"non-GAAP\" margins in earnings releases (Snowflake's "
+            "non-GAAP product margin is in the 70s; GAAP total is 67%).\n"
+            "- **TTM** (trailing twelve months) = the latest four reported quarters, ending June–July 2026 for most "
+            "companies. Fiscal labels differ (Salesforce calls Feb–Jul 2026 \"FY2027\"), so dates are shown as "
+            "calendar months.\n"
             "- **FY2022** is each company's own fiscal year, so it ends between January and December 2022.\n"
             "- **Workday and Intuit** don't tag total cost of revenue; it is summed from the income-statement lines.\n"
             "- **Free cash flow** = operating cash flow − capex (capitalized software excluded).\n"
@@ -167,7 +176,8 @@ def drilldown() -> None:
     ticker = st.selectbox("Company", sorted(names, key=names.get), format_func=lambda t: f"{names[t]} ({t})")
     row = df[df.ticker == ticker].iloc[0]
     st.title(f"{row.company_name} ({ticker})")
-    st.caption(f"{row.segment} · fiscal year ends in month {row.fiscal_year_end_month} · TTM through {row.ttm_through}")
+    st.caption(f"{row.segment} · fiscal year ends in month {row.fiscal_year_end_month} · TTM through "
+               f"{row.ttm_period_end:%b %Y} ({row.ttm_through})")
 
     c = st.columns(5)
     c[0].metric("FY2022 gross margin", pct(row.fy2022_gross_margin_pct))
@@ -262,6 +272,11 @@ def disclosures() -> None:
         "matters as much as the label: Duolingo was the poster child for AI eating margins, and its latest 10-Q "
         "says per-unit AI costs are now falling and margins recovering."
     )
+    st.markdown(
+        "**Reading the labels:** *Says AI is raising costs now* means the filing ties a real cost increase in the "
+        "period to AI. It doesn't mean the margin fell. *Lists AI as a risk only* is mostly standard risk-factor "
+        "language that almost every company now includes, so it says little on its own."
+    )
     counts = df.ai_disclosure.value_counts().reindex(PRESSURE_LABELS.values(), fill_value=0)
     c = st.columns(3)
     for col, (label, n) in zip(c, counts.items()):
@@ -350,7 +365,9 @@ def money() -> None:
         tooltip=["company_name", "metric", alt.Tooltip("change:Q", format="+.1f")],
     ).properties(height=620), width="stretch")
     st.caption("Blue = cost fell (or operating margin rose) as a share of revenue. For costs, red is the warning "
-               "sign; for operating margin, blue is good. Rows are sorted by their biggest cut.")
+               "sign; for operating margin, blue is good. Rows are sorted by their biggest cut. Stock comp isn't "
+               "a separate cost: it's already spread across the other lines, shown on its own because it's the "
+               "part paid in shares rather than cash.")
 
     st.subheader("2. Commitments: the bill that hasn't arrived yet")
     st.markdown("Purchase obligations are contracts a company must pay whether or not it uses the capacity, mostly "
@@ -453,7 +470,11 @@ by another 7 points next year.
 
 **4. The real exposure is in commitments.** Purchase obligations, mostly multi-year cloud contracts, rose from
 **${po_then / 1e3:.1f}B to ${po_now / 1e3:.1f}B** (+{po_now / po_then * 100 - 100:.0f}%) at the {len(both)} companies
-with data for both years. ServiceNow alone has **${now.purchase_obligations_musd / 1e3:.1f}B** committed
+with data for both years. That total leans on one company: without ServiceNow it's
+${(po_then - now.purchase_obligations_fy2022_musd) / 1e3:.1f}B to ${(po_now - now.purchase_obligations_musd) / 1e3:.1f}B
+(+{(po_now - now.purchase_obligations_musd) / (po_then - now.purchase_obligations_fy2022_musd) * 100 - 100:.0f}%), and
+{(both.purchase_obligations_growth_since_fy2022_pct > 0).sum()} of the {len(both)} grew (median
++{both.purchase_obligations_growth_since_fy2022_pct.median():.0f}%). ServiceNow alone has **${now.purchase_obligations_musd / 1e3:.1f}B** committed
 ({now.purchase_obligations_pct_of_ttm_revenue:.0f}% of a year's revenue, up {now.purchase_obligations_growth_since_fy2022_pct:.0f}%
 since FY2022), while its gross margin fell {-co.loc['NOW'].margin_change_bps:.0f} bps. These costs are fixed whatever
 demand turns out to be, which is the downside if AI features don't sell.
@@ -510,6 +531,52 @@ slightly" from customers' AI usage) are flagging now.
                     "- 25 companies is a sample of large public SaaS, not the whole industry.")
 
 
+def faq() -> None:
+    st.title("Questions readers ask")
+    qa = {
+        "Why these 25 companies?":
+            "A hand-picked mix of large and mid-size US-listed software companies in three groups: business "
+            "applications (Salesforce, Adobe, Workday…), data & infrastructure (Snowflake, Datadog, MongoDB…) and "
+            "security (CrowdStrike, Zscaler, Okta…). It deliberately includes AI-first companies (Palantir, C3.ai) "
+            "and ones where AI is a side feature. It's a sample, not the whole industry, and not chosen at random.",
+        "Why compare against fiscal 2022?":
+            "ChatGPT launched in November 2022, so each company's fiscal 2022 is the last full year before the "
+            "generative-AI rush. It's compared with the latest twelve months so seasonality cancels out.",
+        "What's a basis point?": "One hundredth of a percentage point. A margin going from 75.0% to 73.5% is "
+            "−150 bps (−1.5 points).",
+        "How do you know AI caused any of this?":
+            "We don't, and the dashboard doesn't claim it. The numbers show what changed; the AI link comes from "
+            "what companies say in their own filings. Margins also move with pricing, product mix, acquisitions "
+            "and scale, and FY2022 to now overlaps with the post-2022 cost-cutting wave.",
+        "Why not just use the AI cost number companies report?":
+            "Almost none report one. AI compute is usually buried inside \"hosting\" or \"third-party cloud\" costs, "
+            "and model training often sits in R&D. That's why this looks at several places at once: gross margin, "
+            "opex, cloud commitments and the filings' own words.",
+        "Why are these margins lower than the ones in earnings releases?":
+            "Earnings releases usually quote non-GAAP margins, which strip out stock comp and amortization. These "
+            "are GAAP numbers straight from the SEC filings so every company is measured the same way.",
+        "How did the AI read 50 filings, and can I trust it?":
+            "Gemini read the cost and AI sections of each company's latest 10-K and 10-Q and filled a fixed form "
+            "with three answers plus a supporting quote. On 10 hand-labeled filings it was right on 86.7% of "
+            "answers, every quote is checked word-for-word against the filing, and one wrong call (Atlassian) "
+            "was corrected by hand and flagged. See *AI cost & model choice*.",
+        "Why did the cheapest model beat the expensive one?":
+            "For a narrow, well-defined form-filling task, a small model following a clear prompt is enough; the "
+            "larger model over-interpreted some questions (it scored 40% on \"does the company earn AI revenue\"). "
+            "That's the right-sizing point in the playbook: test before paying for the biggest model.",
+        "How current is the data?":
+            "It's a snapshot of SEC filings up to the date in the sidebar, not a live feed. Rerunning the pipeline "
+            "(fetch → dbt build → extraction) refreshes it.",
+        "Can I check the numbers myself?":
+            "Yes. Every figure traces back to an SEC filing, and the code is on "
+            "[GitHub](https://github.com/imranfaiza/ai-saas-analysis). Duolingo, Intuit and Salesforce were "
+            "checked by hand against their filed income statements, and the warehouse runs 76 automated tests.",
+    }
+    for q, a in qa.items():
+        with st.expander(q):
+            st.markdown(a)
+
+
 def ask() -> None:
     st.title("Ask the data")
     st.caption("A Gemini agent turns your question into SQL on a defined semantic layer (so it can't invent its "
@@ -532,7 +599,7 @@ def ask() -> None:
         return Agent()
 
     examples = [
-        "Which companies say AI costs are already hurting their margins?",
+        "Which companies say AI is already raising their costs?",
         "Which 5 companies had the biggest gross margin drop since FY2022?",
         "What is the median TTM gross margin by segment?",
         "Which companies pass the Rule of 40?",
@@ -638,5 +705,8 @@ pg = st.navigation([
     st.Page(disclosures, title="AI disclosures", icon="🤖", url_path="ai-disclosures"),
     st.Page(ask, title="Ask the data", icon="💬", url_path="ask"),
     st.Page(ai_cost, title="AI cost & model choice", icon="💲", url_path="ai-cost"),
+    st.Page(faq, title="FAQ", icon="❓", url_path="faq"),
 ])
+st.sidebar.caption(f"SEC filings through {query('select max(filed) as d from raw.raw_sec__xbrl_facts').d[0]:%b %d, %Y} · "
+                   "[Code on GitHub](https://github.com/imranfaiza/ai-saas-analysis)")
 pg.run()
