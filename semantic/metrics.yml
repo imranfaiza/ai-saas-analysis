@@ -47,22 +47,67 @@ tables:
       gross_margin_pct: gross_profit / revenue x 100
       sales_marketing_pct: sales_marketing / revenue x 100
       rnd_pct: rnd / revenue x 100
+      general_admin: general & administrative expense, USD
+      stock_comp: stock-based compensation, USD
+      operating_income: GAAP operating income, USD
+      rpo: remaining performance obligations at quarter end (contracted revenue not yet recognized), USD
+      purchase_obligations: non-cancelable purchase commitments at quarter end, mostly cloud hosting; usually only at fiscal year ends, USD
+      general_admin_pct: general_admin / revenue x 100
+      stock_comp_pct: stock_comp / revenue x 100
+      operating_margin_pct: operating_income / revenue x 100
       fcf_margin_pct: free_cash_flow / revenue x 100
 
   - name: marts.mart_ai_disclosures
     grain: one row per company (25 rows)
-    description: What each company's latest 10-K says about AI costs, extracted by Gemini and evaluated against hand labels.
+    description: What each company's latest 10-K and latest 10-Q say about AI costs, extracted by Gemini and evaluated against hand labels.
     columns:
       ticker: stock ticker
       company_name: company name
       segment: segment
-      filing_period_end: period end of the 10-K that was read
-      ai_cost_pressure: "'reported' = says AI costs already raised cost of revenue or cut gross margin; 'risk_only' = only a possible future risk; 'none' = not mentioned"
-      main_cost_driver: "main driver of the change in cost of revenue: hosting_infrastructure, ai_compute, personnel, amortization, professional_services, payment_processing, other"
+      ai_cost_pressure: "stronger of the 10-K and 10-Q answers: 'reported' = says AI costs already raised cost of revenue or cut gross margin; 'risk_only' = only a possible future risk; 'none' = not mentioned"
+      ai_cost_pressure_10k: the same answer from the latest 10-K only
+      ai_cost_pressure_10q: the same answer from the latest 10-Q only
+      ai_cost_trend: "from the newer filing: 'rising', 'falling' (e.g. lower per-unit AI model costs) or 'not_stated'"
+      main_cost_driver: "main driver of the change in cost of revenue (from the 10-K): hosting_infrastructure, ai_compute, personnel, amortization, professional_services, payment_processing, other"
       earns_ai_revenue: true if the company says it sells AI products or features
-      evidence_quote: sentence from the 10-K supporting ai_cost_pressure
+      evidence_quote: sentence supporting ai_cost_pressure
       evidence_quote_verified: true if the quote was found word-for-word in the filing text
+      evidence_form: 10-K or 10-Q, the filing the evidence quote came from
+      filing_period_end: period end of that filing
+      newest_form: 10-K or 10-Q, whichever filing is newer
+      newest_evidence_quote: evidence quote from the newer filing
       extraction_model: Gemini model that produced the answers
+
+  - name: marts.mart_ai_spend
+    grain: one row per company (25 rows)
+    description: >
+      Where the money moved from FY2022 to the latest TTM (same window as mart_margin_squeeze), locked-in purchase
+      commitments, and whether revenue and contracted revenue are accelerating. All *_pct columns are % of revenue;
+      *_pct_change columns are percentage points (TTM minus FY2022).
+    columns:
+      ticker: stock ticker
+      company_name: company name
+      segment: segment
+      fy2022_cost_of_revenue_pct / ttm_cost_of_revenue_pct / cost_of_revenue_pct_change: cost of revenue as % of revenue
+      fy2022_sales_marketing_pct / ttm_sales_marketing_pct / sales_marketing_pct_change: sales & marketing as % of revenue
+      fy2022_rnd_pct / ttm_rnd_pct / rnd_pct_change: research & development as % of revenue
+      fy2022_general_admin_pct / ttm_general_admin_pct / general_admin_pct_change: general & administrative as % of revenue
+      fy2022_stock_comp_pct / ttm_stock_comp_pct / stock_comp_pct_change: stock-based compensation as % of revenue
+      fy2022_operating_margin_pct / ttm_operating_margin_pct / operating_margin_pct_change: GAAP operating income as % of revenue
+      opex_pct_change: change in (S&M + R&D + G&A) as % of revenue, points; negative = operating costs cut relative to revenue
+      ttm_revenue_growth_pct: latest TTM revenue growth, %
+      prior_ttm_revenue_growth_pct: the same growth rate one year earlier, %
+      revenue_growth_change_pts: ttm_revenue_growth_pct - prior_ttm_revenue_growth_pct; > 0 means growth is accelerating
+      rpo_period_end: date of the latest remaining performance obligations (RPO) figure
+      rpo_musd: RPO = contracted revenue not yet recognized, $M
+      rpo_growth_pct: RPO vs a year earlier, %
+      rpo_to_ttm_revenue: RPO divided by TTM revenue (years of revenue already under contract)
+      purchase_obligations_as_of: date of the latest purchase-commitment figure (usually a fiscal year end)
+      purchase_obligations_musd: non-cancelable purchase commitments, mostly cloud hosting, $M
+      purchase_obligations_fy2022_musd: the same at the FY2022 year end, $M
+      purchase_obligations_growth_since_fy2022_pct: growth in commitments since FY2022, %
+      purchase_obligations_pct_of_ttm_revenue: commitments as % of TTM revenue
+      purchase_obligations_years_of_cost: commitments divided by TTM cost of revenue
 
 metrics:
   gross_margin_pct:

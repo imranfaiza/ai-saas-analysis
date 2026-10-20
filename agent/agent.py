@@ -28,7 +28,8 @@ PRICES = {  # USD per 1M tokens (input, output)
     "gemini-3.8-flash": (0.75, 3.75),
 }
 MAX_ROWS = 50
-ALLOWED_TABLES = {"marts.mart_margin_squeeze", "marts.fct_company_quarter", "marts.mart_ai_disclosures"}
+ALLOWED_TABLES = {"marts.mart_margin_squeeze", "marts.fct_company_quarter", "marts.mart_ai_disclosures",
+                  "marts.mart_ai_spend"}
 
 SQL_PROMPT = """You write DuckDB SQL for questions about SaaS company financials.
 Use only the semantic layer below. Return one read-only SELECT (or WITH ... SELECT) query.

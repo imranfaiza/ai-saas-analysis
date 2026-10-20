@@ -4,7 +4,8 @@ Run from the repo root (needs GEMINI_API_KEY in .env):
     python ai/extract.py --list-models              # check which model names your key can use
     python ai/extract.py --tier cheap --labeled     # 10 labeled companies, cheap model
     python ai/extract.py --tier all --labeled       # all three models on the labeled companies
-    python ai/extract.py --tier cheap               # all 25 companies
+    python ai/extract.py --tier cheap               # all 25 companies, latest 10-K
+    python ai/extract.py --tier cheap --forms 10-K 10-Q   # latest 10-K and latest 10-Q
 
 Results are cached in data/ai/extractions.csv; rerun with --refresh to call the API again.
 """
@@ -23,10 +24,10 @@ from google.genai import errors, types
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import (  # noqa: E402
     COST_LOG_CSV, EXTRACTIONS_CSV, LABEL_TICKERS, MODELS_CSV, QUESTIONS, ROOT, Extraction,
-    all_tickers, append_csv, latest_10k_text, quote_in_text, read_csv, write_csv,
+    all_tickers, append_csv, latest_text, quote_in_text, read_csv, write_csv,
 )
 
-PROMPT = """You are a financial analyst reading excerpts from a SaaS company's annual report (10-K).
+PROMPT = """You are a financial analyst reading excerpts from a SaaS company's SEC filing (10-K annual or 10-Q quarterly report).
 Answer from the excerpts only. Do not use outside knowledge.
 
 Questions:
@@ -38,6 +39,8 @@ Rules:
   Use "risk_only" if AI costs are only described as something that may or could affect margins.
 - main_cost_driver = the first or largest driver named where MD&A explains the change in cost of revenue.
 - ai_revenue = "yes" if the company sells AI products or features or reports revenue from them.
+- ai_cost_trend = "rising" if the filing says AI costs (total or per unit) increased in the period, "falling" if it
+  says they decreased (e.g. lower per-unit AI model costs), otherwise "not_stated".
 - evidence_quote must be one sentence copied exactly from the excerpts.
 
 Excerpts:
@@ -80,6 +83,7 @@ def main() -> None:
     ap.add_argument("--tier", default="cheap", help="cheap, mid, top or all")
     ap.add_argument("--labeled", action="store_true", help="only the 10 labeled companies")
     ap.add_argument("--tickers", nargs="*")
+    ap.add_argument("--forms", nargs="*", default=["10-K"], help="10-K, 10-Q or both")
     ap.add_argument("--refresh", action="store_true")
     ap.add_argument("--list-models", action="store_true")
     args = ap.parse_args()
@@ -103,18 +107,19 @@ def main() -> None:
             raise SystemExit(f"No tier '{args.tier}' in {MODELS_CSV}")
     tickers = args.tickers or (LABEL_TICKERS if args.labeled else all_tickers())
 
-    existing = {(r["model"], r["ticker"]): r for r in read_csv(EXTRACTIONS_CSV)}
+    existing = {(r["model"], r["filing"]): r for r in read_csv(EXTRACTIONS_CSV)}
     questions = question_block()
 
     for m in models:
         model, tier = m["model"], m["tier"]
         in_price, out_price = float(m["input_usd_per_1m"]), float(m["output_usd_per_1m"])
         print(f"\n== {tier}: {model} ==")
-        for t in tickers:
-            if (model, t) in existing and not args.refresh:
-                print(f"   {t}: cached")
+        for t, form in [(t, f) for t in tickers for f in args.forms]:
+            path, text = latest_text(t, form)
+            key = (model, path.name)
+            if key in existing and not args.refresh:
+                print(f"   {t} {form}: cached")
                 continue
-            path, text = latest_10k_text(t)
             resp, seconds = call(client, model, PROMPT.format(questions=questions, text=text))
             u = resp.usage_metadata
             in_tok = u.prompt_token_count or 0
@@ -131,17 +136,17 @@ def main() -> None:
 
             ex: Extraction | None = resp.parsed
             if ex is None:
-                print(f"   {t}: could not parse response")
+                print(f"   {t} {form}: could not parse response")
                 continue
-            existing[(model, t)] = {
-                "tier": tier, "model": model, "ticker": t, "filing": path.name,
+            existing[key] = {
+                "tier": tier, "model": model, "ticker": t, "form": form, "filing": path.name,
                 **ex.model_dump(),
                 "quote_found": quote_in_text(ex.evidence_quote, text),
                 "cost_usd": round(cost, 6), "latency_s": round(seconds, 2), "extracted_at": ts,
             }
-            print(f"   {t}: {ex.ai_cost_pressure:<9} {ex.main_cost_driver:<22} ai_rev={ex.ai_revenue:<3} "
-                  f"${cost:.4f} {seconds:.1f}s")
-            write_csv(EXTRACTIONS_CSV, list(existing.values()), list(existing[(model, t)]))
+            print(f"   {t} {form}: {ex.ai_cost_pressure:<9} {ex.main_cost_driver:<22} ai_rev={ex.ai_revenue:<3} "
+                  f"trend={ex.ai_cost_trend:<10} ${cost:.4f} {seconds:.1f}s")
+            write_csv(EXTRACTIONS_CSV, list(existing.values()), list(existing[key]))
 
     print(f"\nSaved {EXTRACTIONS_CSV.relative_to(ROOT)} and {COST_LOG_CSV.relative_to(ROOT)}")
 

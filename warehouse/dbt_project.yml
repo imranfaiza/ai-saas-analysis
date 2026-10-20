@@ -35,5 +35,7 @@ seeds:
       +column_types: {ticker: varchar, company_name: varchar, segment: varchar}
     xbrl_tag_map:
       +column_types: {company: varchar, xbrl_tag: varchar, standard_name: varchar, priority: integer, note: varchar}
+    ai_disclosure_reviews:
+      +column_types: {ticker: varchar, form: varchar, ai_cost_pressure: varchar, reason: varchar}
     cost_of_revenue_components:
       +column_types: {company: varchar, component: varchar, xbrl_tag: varchar, axis: varchar, member: varchar, note: varchar}

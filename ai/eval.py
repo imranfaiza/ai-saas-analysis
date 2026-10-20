@@ -23,7 +23,8 @@ def main() -> None:
 
     report, misses = [], []
     for m in read_csv(MODELS_CSV):
-        rows = [r for r in extractions if r["model"] == m["model"] and r["ticker"] in labels]
+        rows = [r for r in extractions
+                if r["model"] == m["model"] and r["ticker"] in labels and "_10-K_" in r["filing"]]
         if not rows:
             continue
         right = {q: 0 for q in QUESTIONS}

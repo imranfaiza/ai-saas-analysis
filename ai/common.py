@@ -53,21 +53,28 @@ CostPressure = Literal["reported", "risk_only", "none"]
 CostDriver = Literal["hosting_infrastructure", "ai_compute", "personnel", "amortization",
                      "professional_services", "payment_processing", "other"]
 YesNo = Literal["yes", "no"]
+CostTrend = Literal["rising", "falling", "not_stated"]
 
 
 class Extraction(BaseModel):
     ai_cost_pressure: CostPressure
     main_cost_driver: CostDriver
     ai_revenue: YesNo
+    ai_cost_trend: CostTrend = Field(
+        description="Whether the filing says AI costs (total or per unit) went up or down in the period")
     evidence_quote: str = Field(description="Exact sentence copied from the text that best supports ai_cost_pressure")
     rationale: str = Field(description="One short sentence explaining the answers")
 
 
-def latest_10k_text(ticker: str) -> tuple[Path, str]:
-    files = sorted(TEXT_DIR.glob(f"{ticker}_10-K_*.txt"))
+def latest_text(ticker: str, form: str = "10-K") -> tuple[Path, str]:
+    files = sorted(TEXT_DIR.glob(f"{ticker}_{form}_*.txt"))
     if not files:
-        raise FileNotFoundError(f"No 10-K text for {ticker} in {TEXT_DIR}")
+        raise FileNotFoundError(f"No {form} text for {ticker} in {TEXT_DIR}")
     return files[-1], files[-1].read_text(encoding="utf-8")
+
+
+def latest_10k_text(ticker: str) -> tuple[Path, str]:
+    return latest_text(ticker, "10-K")
 
 
 def all_tickers() -> list[str]:

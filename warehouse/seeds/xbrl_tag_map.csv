@@ -22,3 +22,13 @@ default,us-gaap:PaymentsToAcquirePropertyPlantAndEquipment,capex,1,
 default,us-gaap:PaymentsToAcquireProductiveAssets,capex,2,
 default,ifrs-full:PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities,capex,9,Atlassian 20-F (IFRS)
 TWLO,us-gaap:PaymentsToAcquireOtherProductiveAssets,capex,1,"Twilio switched to ""Purchases of long-lived and intangible assets"" in late 2022"
+default,us-gaap:GeneralAndAdministrativeExpense,general_admin,1,
+default,ifrs-full:AdministrativeExpense,general_admin,9,Atlassian 20-F (IFRS)
+default,us-gaap:ShareBasedCompensation,stock_comp,1,Cash flow statement add-back
+default,us-gaap:AllocatedShareBasedCompensationExpense,stock_comp,2,Income statement total (DocuSign)
+default,ifrs-full:AdjustmentsForSharebasedPayments,stock_comp,9,Atlassian 20-F (IFRS)
+default,us-gaap:OperatingIncomeLoss,operating_income,1,
+default,ifrs-full:ProfitLossFromOperatingActivities,operating_income,9,Atlassian 20-F (IFRS)
+default,us-gaap:RevenueRemainingPerformanceObligation,rpo,1,Balance (point in time): contracted revenue not yet recognized
+default,us-gaap:UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount,purchase_obligations,1,"Balance (point in time): non-cancelable purchase commitments, mostly cloud hosting"
+default,us-gaap:PurchaseObligation,purchase_obligations,2,Balance (point in time): total purchase obligations from the contractual obligations table

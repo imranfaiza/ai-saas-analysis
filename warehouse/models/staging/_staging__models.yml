@@ -1,6 +1,12 @@
 version: 2
 
 models:
+  - name: stg_sec__balance_values
+    description: Point-in-time values (RPO, purchase obligations), one per company, metric and date, latest filing wins.
+    columns:
+      - name: balance_value_id
+        data_tests: [unique, not_null]
+
   - name: stg_sec__companies
     description: The 25 companies with SEC CIK and fiscal year-end month.
     columns:
@@ -23,7 +29,8 @@ models:
         data_tests:
           - accepted_values:
               arguments:
-                values: [revenue, cost_of_revenue, gross_profit, sales_marketing, rnd, operating_cash_flow, capex]
+                values: [revenue, cost_of_revenue, gross_profit, sales_marketing, rnd, general_admin, stock_comp,
+                         operating_income, operating_cash_flow, capex]
 
   - name: stg_sec__cost_components
     description: >
