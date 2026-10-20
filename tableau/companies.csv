@@ -1,0 +1,26 @@
+Ticker,Company,Segment,AI Disclosure,AI Cost Trend,FY2022 Gross Margin %,TTM Gross Margin %,Gross Margin Change (bps),Revenue Growth %,Cost Growth Gap (pts),Rule of 40,Opex Change (pts of revenue),Operating Margin Change (pts),Revenue Growth Change (pts),Backlog (RPO) Growth %,Purchase Commitments ($M),Purchase Commitments FY2022 ($M),Commitments % of Revenue,TTM Ends
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,Not stated,74.79,29.09,-4570,-37.5,39.3,-104.6,74.8,-125.5,-51.9,-10.4,,,,2026-07-31
+NET,Cloudflare,Security,Lists AI as a risk only,Not stated,76.15,72.58,-357,33.5,19.9,47.4,-16.1,6.5,6.2,38.2,65.0,93.8,2.6,2026-06-30
+NOW,ServiceNow,Applications,Not mentioned,Not stated,78.29,74.77,-352,22.2,21.3,53.3,-10.0,6.5,1.1,21.3,7946.0,1271.0,53.9,2026-06-30
+ASAN,Asana,Applications,Lists AI as a risk only,Not stated,89.72,87.56,-217,9.5,21.2,24.4,-52.9,50.7,-0.3,2.9,,,,2026-07-31
+ZS,Zscaler,Security,Lists AI as a risk only,Not stated,77.79,76.8,-99,25.4,0.4,50.8,-27.0,26.0,2.1,27.4,558.7,126.8,16.7,2026-07-31
+INTU,Intuit,Applications,Lists AI as a risk only,Not stated,81.09,80.17,-92,13.9,-3.4,54.3,-8.5,7.2,-1.7,,4934.0,2306.0,23.0,2026-07-31
+DUOL,Duolingo,Applications,Says AI is raising costs now,Falling,73.09,72.72,-37,29.4,-3.1,65.0,-31.7,31.4,-10.1,,,,,2026-06-30
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,Not stated,79.3,79.51,21,31.5,2.7,61.3,-3.7,3.9,5.5,43.1,1400.0,721.5,35.3,2026-06-30
+TEAM,Atlassian,Applications,Lists AI as a risk only,Rising,83.84,84.83,99,26.0,-14.6,46.1,3.3,-2.3,6.4,45.5,959.8,,14.6,2026-06-30
+HUBS,HubSpot,Applications,Says AI is raising costs now,Rising,82.21,83.25,104,21.1,10.2,44.2,-8.8,9.7,2.2,30.8,,,,2026-06-30
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,Not stated,47.4,48.54,114,17.8,3.3,36.7,-31.9,36.7,6.3,-13.0,349.2,848.4,6.3,2026-06-30
+PATH,UiPath,Applications,Lists AI as a risk only,Not stated,81.07,82.55,148,15.0,2.1,36.1,-63.6,65.0,6.7,14.0,346.9,56.8,20.2,2026-07-31
+ADBE,Adobe,Applications,Lists AI as a risk only,Not stated,87.7,89.25,155,12.0,-1.2,52.8,0.9,1.1,1.4,8.4,6821.0,6090.0,26.3,2026-08-28
+DOCU,DocuSign,Applications,Lists AI as a risk only,Not stated,77.86,79.49,162,8.6,-0.8,44.2,-13.3,14.9,0.3,0.0,84.6,153.2,2.5,2026-07-31
+CRWD,CrowdStrike,Security,Not mentioned,Not stated,73.6,75.25,165,24.3,-5.5,54.1,-6.0,7.6,0.8,48.6,103.7,,1.9,2026-07-31
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,Rising,70.3,72.69,239,25.5,-1.6,49.1,-30.2,32.6,3.5,91.3,300.0,,10.8,2026-07-31
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,Not stated,73.08,75.5,243,16.2,-1.5,35.5,-16.2,17.5,-1.2,26.9,7.9,,0.4,2026-07-31
+ZM,Zoom,Applications,Says AI is raising costs now,Rising,74.28,77.3,302,5.0,-4.1,43.6,5.2,-2.2,1.4,14.1,,,,2026-07-31
+WDAY,Workday,Applications,Lists AI as a risk only,Not stated,72.21,75.8,358,13.3,-1.0,41.4,-10.7,12.9,-0.6,,11.0,,0.1,2026-07-31
+CRM,Salesforce,Applications,Says AI is raising costs now,Rising,73.48,77.28,380,11.2,1.8,45.7,-15.6,17.8,2.9,10.7,4200.0,,9.6,2026-07-31
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,Rising,62.4,67.03,463,32.0,-1.7,54.0,-31.3,35.9,3.7,30.4,2681.9,1504.3,49.3,2026-07-31
+IOT,Samsara,Applications,Lists AI as a risk only,Not stated,70.94,76.38,544,29.5,2.7,43.3,-77.9,83.7,-0.8,35.4,261.5,,14.2,2026-08-01
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,Not stated,78.56,84.8,623,78.9,-42.7,133.5,-45.0,51.3,40.1,104.2,,,,2026-06-30
+BOX,Box,Applications,Lists AI as a risk only,Not stated,71.47,79.55,808,9.6,-2.9,41.2,-4.5,12.6,3.3,13.3,562.5,449.8,45.6,2026-07-31
+OKTA,Okta,Security,Lists AI as a risk only,Not stated,69.54,78.13,859,11.2,-5.9,43.1,-58.2,66.6,-1.5,17.0,,126.7,,2026-07-31

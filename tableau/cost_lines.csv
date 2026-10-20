@@ -1,0 +1,126 @@
+Ticker,Company,Segment,AI Disclosure,Cost Line,Line Order,FY2022 % of Revenue,TTM % of Revenue,Change (pts)
+ADBE,Adobe,Applications,Lists AI as a risk only,Cost of revenue,1,12.3,10.7,-1.5
+ADBE,Adobe,Applications,Lists AI as a risk only,Sales & marketing,2,28.2,27.5,-0.7
+ADBE,Adobe,Applications,Lists AI as a risk only,R&D,3,17.0,18.1,1.1
+ADBE,Adobe,Applications,Lists AI as a risk only,G&A,4,6.9,7.4,0.5
+ADBE,Adobe,Applications,Lists AI as a risk only,Operating margin,5,34.6,35.7,1.1
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,25.2,70.9,45.7
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,68.7,93.2,24.5
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,R&D,3,59.6,90.8,31.2
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,G&A,4,24.1,43.3,19.1
+AI,C3.ai,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-77.6,-203.1,-125.5
+ASAN,Asana,Applications,Lists AI as a risk only,Cost of revenue,1,10.3,12.4,2.2
+ASAN,Asana,Applications,Lists AI as a risk only,Sales & marketing,2,74.8,48.0,-26.8
+ASAN,Asana,Applications,Lists AI as a risk only,R&D,3,53.7,35.6,-18.1
+ASAN,Asana,Applications,Lists AI as a risk only,G&A,4,31.4,23.4,-8.0
+ASAN,Asana,Applications,Lists AI as a risk only,Operating margin,5,-70.1,-19.4,50.7
+BOX,Box,Applications,Lists AI as a risk only,Cost of revenue,1,28.5,20.5,-8.1
+BOX,Box,Applications,Lists AI as a risk only,Sales & marketing,2,34.2,33.3,-0.8
+BOX,Box,Applications,Lists AI as a risk only,R&D,3,25.0,24.7,-0.3
+BOX,Box,Applications,Lists AI as a risk only,G&A,4,15.5,12.1,-3.4
+BOX,Box,Applications,Lists AI as a risk only,Operating margin,5,-3.2,9.4,12.6
+CRM,Salesforce,Applications,Says AI is raising costs now,Cost of revenue,1,26.5,22.7,-3.8
+CRM,Salesforce,Applications,Says AI is raising costs now,Sales & marketing,2,44.7,34.4,-10.4
+CRM,Salesforce,Applications,Says AI is raising costs now,R&D,3,16.9,14.5,-2.4
+CRM,Salesforce,Applications,Says AI is raising costs now,G&A,4,9.8,6.9,-2.9
+CRM,Salesforce,Applications,Says AI is raising costs now,Operating margin,5,2.1,19.9,17.8
+CRWD,CrowdStrike,Security,Not mentioned,Cost of revenue,1,26.4,24.8,-1.6
+CRWD,CrowdStrike,Security,Not mentioned,Sales & marketing,2,42.5,36.0,-6.5
+CRWD,CrowdStrike,Security,Not mentioned,R&D,3,25.6,28.8,3.3
+CRWD,CrowdStrike,Security,Not mentioned,G&A,4,15.4,12.6,-2.8
+CRWD,CrowdStrike,Security,Not mentioned,Operating margin,5,-9.8,-2.2,7.6
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,20.7,20.5,-0.2
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,29.6,27.6,-2.0
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,R&D,3,44.9,43.7,-1.2
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,G&A,4,8.3,7.8,-0.5
+DDOG,Datadog,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-3.5,0.4,3.9
+DOCU,DocuSign,Applications,Lists AI as a risk only,Cost of revenue,1,22.1,20.5,-1.6
+DOCU,DocuSign,Applications,Lists AI as a risk only,Sales & marketing,2,51.1,36.1,-15.0
+DOCU,DocuSign,Applications,Lists AI as a risk only,R&D,3,18.7,19.6,0.9
+DOCU,DocuSign,Applications,Lists AI as a risk only,G&A,4,11.0,11.9,0.8
+DOCU,DocuSign,Applications,Lists AI as a risk only,Operating margin,5,-2.9,12.0,14.9
+DUOL,Duolingo,Applications,Says AI is raising costs now,Cost of revenue,1,26.9,27.3,0.4
+DUOL,Duolingo,Applications,Says AI is raising costs now,Sales & marketing,2,18.1,13.0,-5.1
+DUOL,Duolingo,Applications,Says AI is raising costs now,R&D,3,40.7,29.5,-11.2
+DUOL,Duolingo,Applications,Says AI is raising costs now,G&A,4,31.9,16.5,-15.4
+DUOL,Duolingo,Applications,Says AI is raising costs now,Operating margin,5,-17.6,13.7,31.4
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,26.9,24.5,-2.4
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,47.2,40.8,-6.4
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,R&D,3,31.7,25.3,-6.5
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,G&A,4,14.3,11.0,-3.3
+ESTC,Elastic,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-20.1,-2.6,17.5
+HUBS,HubSpot,Applications,Says AI is raising costs now,Cost of revenue,1,17.8,16.8,-1.0
+HUBS,HubSpot,Applications,Says AI is raising costs now,Sales & marketing,2,51.2,43.4,-7.8
+HUBS,HubSpot,Applications,Says AI is raising costs now,R&D,3,25.5,26.3,0.8
+HUBS,HubSpot,Applications,Says AI is raising costs now,G&A,4,11.4,9.6,-1.8
+HUBS,HubSpot,Applications,Says AI is raising costs now,Operating margin,5,-5.9,3.8,9.7
+INTU,Intuit,Applications,Lists AI as a risk only,Cost of revenue,1,18.9,19.8,0.9
+INTU,Intuit,Applications,Lists AI as a risk only,Sales & marketing,2,27.7,25.8,-1.9
+INTU,Intuit,Applications,Lists AI as a risk only,R&D,3,18.4,15.7,-2.7
+INTU,Intuit,Applications,Lists AI as a risk only,G&A,4,11.5,7.6,-3.9
+INTU,Intuit,Applications,Lists AI as a risk only,Operating margin,5,20.2,27.4,7.2
+IOT,Samsara,Applications,Lists AI as a risk only,Cost of revenue,1,29.1,23.6,-5.4
+IOT,Samsara,Applications,Lists AI as a risk only,Sales & marketing,2,68.0,41.4,-26.5
+IOT,Samsara,Applications,Lists AI as a risk only,R&D,3,47.9,20.3,-27.5
+IOT,Samsara,Applications,Lists AI as a risk only,G&A,4,37.3,13.5,-23.8
+IOT,Samsara,Applications,Lists AI as a risk only,Operating margin,5,-82.6,1.0,83.7
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,29.7,27.3,-2.4
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,54.0,35.3,-18.7
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,R&D,3,35.3,28.0,-7.3
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,G&A,4,14.1,9.9,-4.2
+MDB,MongoDB,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-33.1,-0.5,32.6
+NET,Cloudflare,Security,Lists AI as a risk only,Cost of revenue,1,23.9,27.4,3.6
+NET,Cloudflare,Security,Lists AI as a risk only,Sales & marketing,2,47.8,41.2,-6.6
+NET,Cloudflare,Security,Lists AI as a risk only,R&D,3,30.6,22.8,-7.8
+NET,Cloudflare,Security,Lists AI as a risk only,G&A,4,18.4,16.7,-1.8
+NET,Cloudflare,Security,Lists AI as a risk only,Operating margin,5,-20.6,-14.1,6.5
+NOW,ServiceNow,Applications,Not mentioned,Cost of revenue,1,21.7,25.2,3.5
+NOW,ServiceNow,Applications,Not mentioned,Sales & marketing,2,38.8,32.5,-6.3
+NOW,ServiceNow,Applications,Not mentioned,R&D,3,24.4,22.1,-2.3
+NOW,ServiceNow,Applications,Not mentioned,G&A,4,10.1,8.7,-1.5
+NOW,ServiceNow,Applications,Not mentioned,Operating margin,5,4.9,11.4,6.5
+OKTA,Okta,Security,Lists AI as a risk only,Cost of revenue,1,30.5,21.9,-8.6
+OKTA,Okta,Security,Lists AI as a risk only,Sales & marketing,2,59.3,35.3,-24.0
+OKTA,Okta,Security,Lists AI as a risk only,R&D,3,36.1,21.2,-14.9
+OKTA,Okta,Security,Lists AI as a risk only,G&A,4,33.2,13.9,-19.3
+OKTA,Okta,Security,Lists AI as a risk only,Operating margin,5,-59.1,7.5,66.6
+PATH,UiPath,Applications,Lists AI as a risk only,Cost of revenue,1,18.9,17.4,-1.5
+PATH,UiPath,Applications,Lists AI as a risk only,Sales & marketing,2,78.2,40.1,-38.1
+PATH,UiPath,Applications,Lists AI as a risk only,R&D,3,31.0,21.4,-9.6
+PATH,UiPath,Applications,Lists AI as a risk only,G&A,4,28.0,12.2,-15.8
+PATH,UiPath,Applications,Lists AI as a risk only,Operating margin,5,-56.1,8.9,65.0
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,21.4,15.2,-6.2
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,36.9,20.1,-16.8
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,R&D,3,18.9,10.4,-8.5
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,G&A,4,31.3,11.5,-19.8
+PLTR,Palantir,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-8.5,42.8,51.3
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,Cost of revenue,1,37.6,33.0,-4.6
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,Sales & marketing,2,61.0,42.4,-18.7
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,R&D,3,38.3,38.8,0.5
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,G&A,4,21.7,8.6,-13.1
+SNOW,Snowflake,Data & Infrastructure,Says AI is raising costs now,Operating margin,5,-58.6,-22.8,35.9
+TEAM,Atlassian,Applications,Lists AI as a risk only,Cost of revenue,1,16.2,15.2,-1.0
+TEAM,Atlassian,Applications,Lists AI as a risk only,Sales & marketing,2,19.1,23.4,4.3
+TEAM,Atlassian,Applications,Lists AI as a risk only,R&D,3,46.1,49.7,3.7
+TEAM,Atlassian,Applications,Lists AI as a risk only,G&A,4,16.1,11.5,-4.7
+TEAM,Atlassian,Applications,Lists AI as a risk only,Operating margin,5,2.5,0.2,-2.3
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,Cost of revenue,1,52.6,51.5,-1.1
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,Sales & marketing,2,32.6,15.6,-17.0
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,R&D,3,28.2,19.0,-9.2
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,G&A,4,13.5,7.9,-5.7
+TWLO,Twilio,Data & Infrastructure,Lists AI as a risk only,Operating margin,5,-31.5,5.2,36.7
+WDAY,Workday,Applications,Lists AI as a risk only,Cost of revenue,1,27.8,24.2,-3.6
+WDAY,Workday,Applications,Lists AI as a risk only,Sales & marketing,2,28.4,27.0,-1.5
+WDAY,Workday,Applications,Lists AI as a risk only,R&D,3,36.6,27.7,-8.9
+WDAY,Workday,Applications,Lists AI as a risk only,G&A,4,9.5,9.2,-0.3
+WDAY,Workday,Applications,Lists AI as a risk only,Operating margin,5,-2.3,10.7,12.9
+ZM,Zoom,Applications,Says AI is raising costs now,Cost of revenue,1,25.7,22.7,-3.0
+ZM,Zoom,Applications,Says AI is raising costs now,Sales & marketing,2,27.7,27.3,-0.4
+ZM,Zoom,Applications,Says AI is raising costs now,R&D,3,8.9,18.1,9.2
+ZM,Zoom,Applications,Says AI is raising costs now,G&A,4,11.8,8.2,-3.6
+ZM,Zoom,Applications,Says AI is raising costs now,Operating margin,5,25.9,23.7,-2.2
+ZS,Zscaler,Security,Lists AI as a risk only,Cost of revenue,1,22.2,23.2,1.0
+ZS,Zscaler,Security,Lists AI as a risk only,Sales & marketing,2,67.4,44.6,-22.8
+ZS,Zscaler,Security,Lists AI as a risk only,R&D,3,26.5,26.9,0.4
+ZS,Zscaler,Security,Lists AI as a risk only,G&A,4,13.9,9.2,-4.7
+ZS,Zscaler,Security,Lists AI as a risk only,Operating margin,5,-30.0,-4.0,26.0
