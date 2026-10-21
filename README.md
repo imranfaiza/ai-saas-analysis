@@ -5,6 +5,9 @@
 **Live dashboard:** [ai-saas-analysis.streamlit.app](https://ai-saas-analysis-hifnx6e7ykpytjicp3gd6b.streamlit.app/)
 (the free host sleeps when idle; click "wake up" and give it ~30 seconds)
 
+**Tableau version:** [Is AI eating SaaS margins? on Tableau Public](https://public.tableau.com/app/profile/faiza.imran/viz/MarginAnalysis-IsAIeatingSaaSProfitMargins/IsAIeatingSaaSmargins)
+(built from the CSVs in [`tableau/`](tableau/))
+
 Software used to be almost free to deliver once it was built: 75–80 cents of every dollar stayed as gross profit.
 AI changes that, because every AI answer runs a model on rented GPUs, so cost grows with usage again. This project
 tests whether that is showing up in the numbers of 25 public SaaS companies, using their SEC filings from fiscal
@@ -119,6 +122,7 @@ agent/                    text-to-SQL agent and its test questions
 semantic/metrics.yml      table, metric and rule definitions the agent is allowed to use
 mcp_server.py             MCP server for AI assistants
 streamlit_app.py          dashboard
+tableau/                  CSV exports and build guide for the Tableau Public version
 data/                     downloaded facts, filing text, labels and AI logs
 VALIDATION.md             hand-checks against filed income statements
 ```
